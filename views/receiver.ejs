@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="i0l7oHvMD9gsKhX-ggiwZUAQriN0TVNP4_tB0r8u7mg" />
+    <title>QuickBeam: Easy Photo Transfer Between Devices via QR Code</title>
+  
+    <meta name="description" content="Instantly transfer photos and images wirelessly between your phone, computer, or tablet with QuickBeam. Simple, fast photo sharing using a QR code. No login required!">
+    <meta name="keywords" content="photo transfer, image transfer, share photos, wireless photo transfer, qr code photo share, send pictures phone to pc, quickbeam, photo beam, easy photo sharing, cross-device photo transfer">
+    <link rel="canonical" href="https://quickbeam.app/" /> 
+    <meta property="og:title" content="QuickBeam: No App Install Photo Transfer between Phone and Computer via QR Code" />
+    <meta property="og:description" content="No app install photo transfer. Instantly send photos wirelessly between devices with QuickBeam using a simple QR code scan. Fast & easy!" />
+    <meta property="og:image" content="https://cdn.glitch.global/7a08d29a-3fe4-44c5-8a06-ff5e944d8c35/QuickBeam_Recevier_Logo_Wide.png?v=1744800037571" /> <!-- Use your main logo -->
+    <meta property="og:url" content="https://quickbeam.app/" /> <!-- Replace with your actual domain -->
+    <meta property="og:type" content="website" /> <!-- Or "app" if more appropriate -->
+    <meta property="og:site_name" content="QuickBeam" />
+    <meta name="twitter:card" content="summary_large_image" /> <!-- Use 'summary' if logo is smaller/square -->
+    <meta name="twitter:title" content="QuickBeam: Easy Photo Transfer Between Devices via QR Code" />
+    <meta name="twitter:description" content="No app install photo transfer. Instantly transfer photos wirelessly between devices with QuickBeam using a simple QR code scan. Fast & easy!" />
+    <meta name="twitter:image" content="https://cdn.glitch.global/7a08d29a-3fe4-44c5-8a06-ff5e944d8c35/QuickBeam_Recevier_Logo_Wide.png?v=1744800037571" />
+    
+  
+    <!-- Odometer styles (car theme) -->
+    <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-plaza.css">
+  
+    <!-- Link to the updated style.css -->
+    <link rel="stylesheet" href="/public/style.css">
+  
+
+  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickBeam Photo Transfer",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web-based", 
+      "description": "QuickBeam allows users to easily and quickly transfer photos and images wirelessly between devices (like phone to computer or tablet) using a simple QR code scan.",
+      "url": "https://your-app-domain.com/", // Replace with your actual domain
+      "image": "https://cdn.glitch.global/2198401d-d43a-4076-b5b8-518cc2324e64/QuickBeam%20Logo%202.png?v=1744667379527",
+      "featureList": [
+        "Wireless photo transfer",
+        "QR code pairing",
+        "Cross-device compatibility (via browser)",
+        "No login required",
+        "Fast image transfer"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0", // Assuming it's free
+        "priceCurrency": "USD" 
+      }
+      // Optional: Add aggregateRating if you have reviews
+    }
+    </script>
+  
+    
+  
+    <link rel="icon" href="https://cdn.glitch.global/2198401d-d43a-4076-b5b8-518cc2324e64/QuickBeam%20Icon.png?v=1744669418539" type="image/x-icon">  <!-- Favicon -->
+</head>
+<body>
+    <!-- Main container for centering and max-width -->
+    <div class="receiver-container">
+        <!-- Good for SEO I guess but don't show it -->
+        <h1 style="display: none;">QuickBeam: Simple & Fast Photo Transfer</h1>
+        <div class="header-container">
+            <div class="header-item logo">
+              <img src="https://cdn.glitch.global/7a08d29a-3fe4-44c5-8a06-ff5e944d8c35/QuickBeam_Recevier_Logo.png?v=1744796655182" alt="QuickBeam Logo - Fast Photo Transfer App" id="logo">
+            </div>
+          
+            <div class="header-item steps">
+              <img src="https://cdn.glitch.global/2198401d-d43a-4076-b5b8-518cc2324e64/QuickBeams%20Icons.png?v=1744668694708" alt="Steps: Scan QR, Transfer Photos, Receive Images" id="icon-steps">
+            </div>
+          
+            <div class="header-item ad">
+              <a href="mailto:yourname@example.com" title="Advertise here! Contact us for pricing.">
+                <img src="https://cdn.glitch.global/7a08d29a-3fe4-44c5-8a06-ff5e944d8c35/AdSpaceForSale.png?v=1744814930447" alt="Ad Space For Sale" id="ad-space">
+              </a>
+            </div>
+            
+            <div class="header-item counter">
+              <div class="counter-box" title="Total number of photos transferred using site.">
+                <div class="counter-label" title="Total number of photos transferred using site.">Photos Beamed</div>
+                <div id="photo-counter" class="odometer" title="Total number of photos transferred using site.">0000</div>
+              </div>
+            </div>
+          
+
+          
+
+        
+      </div>
+      
+        <div id="status" class="status-box">Connecting to server...</div>
+
+        <!-- Pairing Section -->
+        <div id="pairing-section" class="card">
+            <h2>1. Scan QR Code with Phone/Sender Device</h2>
+            <div class="instructions">
+                Open the QR link on your phone. Received images show as thumbnails below and auto-save to your download folder if selected.
+            </div>
+            <p id="session-timer-display" class="timer-display"></p>
+            <div id="qr-code-container">
+                <img id="qr-code-img" src="" alt="QR Code will appear here" style="display: none;"/>
+                <p id="qr-loading" class="loading-text">Waiting for QR Code...</p>
+            </div>
+            <p id="session-id-display" class="session-info">Sender URL will appear here.</p>
+        </div>
+
+        <!-- Image Display Section -->
+        <div id="image-display-section" class="card" style="display: none;">
+            <h2>2. Received Images</h2>
+             <p id="image-status" class="status-box">Waiting for sender to connect...</p>
+             <p id="image-timer-display" class="timer-display"></p>
+             <!-- Container where images will be added -->
+            
+             <!-- === START: Auto-Download Checkbox === -->
+             <div class="auto-download-control">
+                 <input type="checkbox" id="autoDownloadCheckbox" checked>
+                 <label for="autoDownloadCheckbox">Auto-download received images</label>
+             </div>
+             <!-- === END: Auto-Download Checkbox === -->
+          
+          
+            <div id="received-images-container">
+                <!-- Images will be appended here by JavaScript -->
+            </div>
+        </div>
+
+    </div> <!-- End of receiver-container -->
+    
+    <div id="disclaimer-section" class="card disclaimer-card">
+        <strong>Privacy-first design:</strong>
+        Your images are stored only during the transfer and <b>deleted right after</b>. We never save, view, or track your files - everything stays private.
+        <strong>Disclaimer:</strong>
+        This application facilitates the temporary transfer of images between devices. Images are stored on our servers only for the duration of the transfer process and are <b>automatically deleted</b> immediately upon completion. We do not retain, review, or monitor the content of images transferred through this application. Users are solely responsible for the content of the images they transfer and must comply with all applicable laws and regulations, including copyright and intellectual property laws. We are not responsible for any illegal, offensive, or infringing content transmitted using this application. By using this application, you acknowledge and agree to these terms.
+        <p>© 2025 <a href="https://www.reqaire.com">ReqAIre</a>. <a href="mailto:reqaire@gmail.com">Contact Us</a></p>
+    </div>
+  
+
+    <script>
+      
+      
+      
+      // Pass config from server to client script
+        window.CONFIG = {
+            SESSION_TIMEOUT_MS: <%= SESSION_TIMEOUT_MS %>,
+            POLLING_INTERVAL_MS: <%= POLLING_INTERVAL_MS %>
+        };
+    </script>
+    <script src="/public/FileSaver.min.js"></script>
+    <script src="https://github.hubspot.com/odometer/odometer.js"></script>
+    <script src="/public/receiver.js"></script>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('jesperadolfsson', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support me',
+        'floating-chat.donateButton.background-color': '#00b9fe',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+</body>
+</html>

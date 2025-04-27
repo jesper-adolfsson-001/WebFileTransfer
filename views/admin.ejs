@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Log Viewer</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <link rel="icon" href="https://cdn.glitch.global/2198401d-d43a-4076-b5b8-518cc2324e64/QuickBeam%20Icon.png?v=1744669418539" type="image/x-icon">  <!-- Favicon -->
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Event Logs</h1>
+        <!-- Add Logout Link -->
+        <div class="admin-logout-link">
+            <a href="/admin/logout">Logout</a>
+        </div>
+        <!-- End Logout Link -->
+        <div id="controls">
+            <label for="limit">Logs per page:</label>
+            <select id="limit">
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+                <option value="250">250</option>
+            </select>
+        </div>
+        <div class="table-container">
+            <table id="log-table">
+                <thead>
+                    <tr>
+                        <th data-sort="timestamp">Timestamp <span class="sort-indicator"></span></th>
+                        <th data-sort="ip">IP Address <span class="sort-indicator"></span></th>
+                        <th data-sort="sessionId">Session ID <span class="sort-indicator"></span></th>
+                        <th data-sort="action">Action <span class="sort-indicator"></span></th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="log-table-body">
+                    <!-- Log entries will be loaded here -->
+                    <tr><td colspan="5">Loading logs...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="pagination-controls">
+            <!-- Pagination buttons will be loaded here -->
+        </div>
+        <div id="error-message" class="error" style="display: none;"></div>
+    </div>
+
+     <script src="/public/admin.js"></script>
+</body>
+</html>

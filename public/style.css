@@ -1,0 +1,528 @@
+/* General Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    padding: 0; /* Remove default padding, handled by container */
+    margin: 0;
+    background-color: #f0f2f5; /* Lighter, softer background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ============================================= */
+/* === RECEIVER STYLES START =================== */
+/* ============================================= */
+
+.receiver-container {
+    max-width: 1100px; /* Max width for content */
+    margin: 5px auto; /* Center the container with top/bottom margin */
+    padding: 20px; /* Padding inside the container */
+}
+
+h1 {
+    color: #1c1e21; /* Darker heading color */
+    text-align: left;
+    
+    font-weight: 600;
+    margin-top: 10px; /* Reduced top margin */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Each section gets its % width */
+.header-item {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header-item.logo {
+  flex-basis: 12%;
+  text-align: left;
+}
+.header-item.counter {
+  flex-basis: 18%;
+  text-align: right;
+}
+.header-item.ad {
+  flex-basis: 37%;
+}
+.header-item.steps {
+  flex-basis: 23%;
+  text-align: right;
+}
+
+/* Keep your existing image styles */
+#logo, #icon-steps {
+  max-height: 100px;
+  height: auto;
+  opacity: 0.8;
+}
+
+#ad-space {
+  margin-top: 7px;
+  max-height: 100px;
+  height: auto;
+  opacity: 0.8;
+  
+}
+
+
+
+
+
+h2 {
+    color: #333;
+    margin-top: 0; /* Remove default top margin inside cards */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Status Box Style (used for #status, #image-status, #qr-loading etc.) */
+.status-box,
+#qr-loading, /* Apply to specific IDs too if needed */
+.loading-text {
+    margin: 15px 0;
+    padding: 12px 15px;
+    background-color: #e7f3ff; /* Light blue info background */
+    border: 1px solid #cfe2ff;
+    color: #0c5460;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+/* Card Style for Sections */
+.card {
+    margin-top: 20px;
+    padding: 25px 30px; /* More padding */
+    background-color: #fff;
+    border: 1px solid #ddd; /* Softer border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.card .instructions {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Timer and Session Info Styling */
+.timer-display,
+.session-info {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#session-id-display.session-info { /* Specific style for the URL */
+    word-wrap: break-word;
+    background-color: #f8f9fa;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    font-family: monospace; /* Good for URLs */
+    font-size: 0.8em;
+}
+
+/* QR Code Styling */
+#qr-code-container {
+    text-align: center;
+    margin: 20px 0; /* More vertical space */
+}
+
+#qr-code-img {
+    display: inline-block; /* Allows centering via text-align */
+    margin: 0 auto; /* Center if block, but inline-block is fine here */
+    max-width: 220px; /* Slightly larger default */
+    height: auto;
+    border: 1px solid #eee; /* Very light border */
+    padding: 5px; /* Small padding around QR */
+    background-color: white; /* Ensure white background if needed */
+    border-radius: 4px;
+}
+
+/* --- Image Grid Styles (Refined) --- */
+#received-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    gap: 15px;
+    padding: 15px; /* Padding inside the grid area */
+    margin-top: 20px;
+    border: 1px dashed #ccc; /* Dashed border for dropzone feel */
+    border-radius: 6px;
+    min-height: 150px;
+    background-color: #f8f9fa; /* Slightly off-white background */
+}
+
+#received-images-container .image-container {
+    flex-basis: calc(25% - 12px); /* Adjust basis slightly for gap */
+    max-width: 200px;
+    min-width: 140px; /* Slightly smaller min-width */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 6px; /* Rounded corners for thumbnails */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Hover effect */
+}
+
+
+#received-images-container .image-container:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+
+#received-images-container img {
+    display: block;
+    max-width: 100%;
+    height: 130px; /* Fixed height for consistency */
+    object-fit: contain; /* Use contain to see the whole image */
+    margin-bottom: 8px;
+    border: none; /* Remove inner border */
+}
+
+.image-filename {
+    font-size: 0.75em; /* Smaller font for filename */
+    color: #555;
+    word-wrap: break-word;
+    margin-top: auto;
+    line-height: 1.3;
+}
+
+/* Responsive adjustments for Image Grid (Existing are good, maybe slightly adjusted) */
+@media (max-width: 900px) { /* Adjust breakpoint based on container width */
+    #received-images-container .image-container {
+        flex-basis: calc(33.33% - 12px);
+    }
+}
+
+@media (max-width: 600px) {
+     .receiver-container {
+        margin: 15px auto;
+        padding: 15px;
+    }
+    .card {
+        padding: 20px;
+    }
+     h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    #received-images-container .image-container {
+        flex-basis: calc(50% - 10px); /* 2 items per row on smaller screens */
+         max-width: none; /* Allow them to fill the space */
+    }
+}
+
+@media (max-width: 400px) {
+    #received-images-container .image-container {
+        flex-basis: calc(100% - 0px); /* 1 item per row on very small screens */
+    }
+     .image-filename {
+        font-size: 0.8em;
+    }
+}
+
+.disclaimer-card {
+    font-size: 0.6em; /* Reduce font size */
+    color: #777;
+    margin-top: 30px;
+    padding: 15px;
+    border-top: none;  /* Removing the border */
+    text-align: center;
+    background-color: #f8f9fa; /* Matches the background of the image grid */
+    border: 1px solid #ddd; /* Matches the border of the other cards */
+    border-radius: 8px; /* Consistent rounded corners */
+    max-width: 1060px;    /* Add max-width to match receiver container */
+    margin-left: auto;  /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.disclaimer-card p {
+    margin-bottom: 5px;
+    line-height: 1.3; /* Improve readability at smaller font size */
+}
+.disclaimer-card strong { /* Just for the "Disclaimer:" title */
+    font-weight: bold;
+}
+
+
+
+/* ============================================= */
+/* === RECEIVER STYLES END ===================== */
+/* ============================================= */
+
+
+/* ============================================= */
+/* === SENDER STYLES (DO NOT MODIFY) =========== */
+/* ============================================= */
+/* Styles for the sender page - these should remain untouched */
+
+#upload-status, #scan-result, #image-loading {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e0e0e0; /* Keeping original for example */
+    border-radius: 4px;
+}
+
+#upload-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#received-image, #preview { /* Example - keeping original target */
+    display: block;
+    margin: 10px auto;
+    max-width: 90%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+#reader {
+    border: 1px solid #ccc;
+    margin: 15px auto; /* Center the reader */
+}
+
+input[type="file"] {
+    margin-top: 10px;
+    display: block;
+}
+
+label {
+    font-weight: bold;
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 1em;
+    border-radius: 0.5em;
+    text-align: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    width: 100%; /* Full width of container */
+    max-width: 300px; /* Optional: keep it reasonable */
+    box-sizing: border-box;
+}
+
+/* Style for error messages (can be general) */
+.error {
+    color: red;
+    font-weight: bold;
+    background-color: #ffe0e0;
+    border: 1px solid red;
+    padding: 10px 15px; /* Added padding */
+    border-radius: 4px; /* Added radius */
+    margin: 10px 0; /* Added margin */
+}
+
+/* ============================================= */
+/* === SENDER STYLES END ======================= */
+/* ============================================= */
+
+/* === ADMIN STYLES START === */
+
+.admin-container {
+    max-width: 1200px; /* Wider container for table */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* --- Add position relative --- */
+    position: relative; /* Establishes positioning context for children */
+}
+
+.admin-container h1 {
+    text-align: center;
+    /* --- Adjust margin to avoid overlap with logout button --- */
+    margin-bottom: 25px;
+    margin-top: 10px; /* Ensure some space above if needed */
+    padding-right: 100px; /* Add padding to prevent text going under the button */
+}
+
+#controls {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+#controls label {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#controls select {
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.table-container {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+#log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+#log-table thead th {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: bold;
+    white-space: nowrap; /* Prevent header text wrapping */
+}
+
+#log-table thead th[data-sort] {
+    cursor: pointer;
+}
+
+#log-table thead th .sort-indicator {
+    font-size: 0.8em;
+    vertical-align: middle;
+    display: inline-block; /* Allows sizing */
+    width: 1em; /* Reserve space for indicator */
+    text-align: right;
+}
+
+#log-table tbody td {
+    border: 1px solid #e0e0e0;
+    padding: 8px 12px;
+    vertical-align: top; /* Align content to top */
+}
+
+#log-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#log-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#pagination-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#pagination-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#pagination-controls button.active {
+    background-color: #0056b3;
+    font-weight: bold;
+}
+
+#pagination-controls span { /* For ellipsis */
+    display: inline-block;
+    padding: 8px 5px;
+    margin: 0 3px;
+    color: #555;
+}
+
+/* Error message styling (inherits from base style.css) */
+.admin-container .error {
+    margin-top: 15px;
+    padding: 15px;
+}
+
+.admin-logout-link {
+    /* Remove previous positioning styles */
+    /* text-align: right; */
+    /* margin-bottom: 10px; */
+    /* margin-top: -30px; */
+    /* padding-right: 5px; */
+
+    /* --- Add absolute positioning --- */
+    position: absolute;
+    top: 20px; /* Match container padding */
+    right: 20px; /* Match container padding */
+}
+
+.admin-logout-link a {
+    color: #dc3545; /* Red color for logout */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-logout-link a:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* === ADMIN STYLES END === */
+
+/* === ODOmeter Styles === */
+.counter-box {
+  background: #e7f3ff;
+  border-radius: 16px;
+  padding: 5px 16px;
+  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  text-align: center;
+  color: #ffffff;
+  border: 2px solid #e0f0ff;
+}
+
+.counter-label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0e395d; /* Soft violet, feel free to tweak */
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+#photo-counter {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  // color: #1983ed;
+  /* text-shadow: 0 0 6px #6e52ff; */
+}
+

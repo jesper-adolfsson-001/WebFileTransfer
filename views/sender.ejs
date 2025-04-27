@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <!-- Include the QR Scanner library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <link rel="icon" href="https://cdn.glitch.global/2198401d-d43a-4076-b5b8-518cc2324e64/QuickBeam%20Icon.png?v=1744669418539" type="image/x-icon">  <!-- Favicon -->
+</head>
+<body>
+    <h1>Quickbeam Sender</h1>
+    <div id="status">Waiting for connection.....</div>
+    <div id="upload-section" style="display: none;">
+        <p>Session ID: <span id="session-id"></span></p>
+                
+        <!-- Hidden file inputs -->
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+        <!-- Visible buttons -->
+        <div style="display: flex; flex-direction: column; gap: 1em; align-items: center;">
+          <button id="cameraBtn" class="upload-btn">📷 Take Photo</button>
+          <button id="fileBtn" class="upload-btn">🖼️ Choose from Gallery</button>
+        </div>
+      
+        <div id="upload-status"></div>
+        <img id="preview" src="#" alt="Image Preview" style="display:none; max-width: 300px; margin-top: 10px;"/>
+    </div>
+  
+    <script>
+        // Pass config from server to client script
+        window.CONFIG = {
+            // SESSION_ID: "<%= typeof SESSION_ID !== 'undefined' ? SESSION_ID : '' %>", // Can get from URL anyway
+            POLLING_INTERVAL_MS: <%= POLLING_INTERVAL_MS %>
+        };
+    </script>
+
+    <script src="/public/sender.js"></script>
+  
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+      <script>
+        kofiWidgetOverlay.draw('jesperadolfsson', {
+          'type': 'floating-chat',
+          'floating-chat.donateButton.text': 'Support me',
+          'floating-chat.donateButton.background-color': '#00b9fe',
+          'floating-chat.donateButton.text-color': '#fff'
+        });
+      </script>
+</body>
+</html>
