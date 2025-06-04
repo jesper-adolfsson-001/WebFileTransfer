@@ -1,40 +1,46 @@
-# Hello Node!
+# WebFileTransfer
 
-This project includes a Node.js server script and a web page that connects to it. The front-end page presents a form the visitor can use to submit a color name, sending the submitted value to the back-end API running on the server. The server returns info to the page that allows it to update the display with the chosen color. 🎨
+WebFileTransfer is a lightweight Node 16/Fastify web app that lets you move photos from any phone to a computer on the same network **without installing anything**.  
+Pair the two browsers with a one-time QR-code, shoot/select pictures on the phone, and they appear (and can auto-download) on the desktop almost instantly.
 
-[Node.js](https://nodejs.org/en/about/) is a popular runtime that lets you run server-side JavaScript. This project uses the [Fastify](https://www.fastify.io/) framework and explores basic templating with [Handlebars](https://handlebarsjs.com/).
+---
 
-_Last updated: 14 August 2023_
 
-## Prerequisites
+# How it works
 
-You'll get best use out of this project if you're familiar with basic JavaScript. If you've written JavaScript for client-side web pages this is a little different because it uses server-side JS, but the syntax is the same!
+- Receiver (desktop) browses to /receiver: The server starts a short-lived session and renders a QR-code.
+- Sender (phone) scans the code → opens /sender?SessionId=… : The page lets you take or pick photos and POSTs them to the server.
+- The receiver page polls /status/:sessionId, fetches each file via : /image/:sessionId/:imageId, shows a thumbnail and (optionally) saves it locally using FileSaver.js.
+- Sessions time out automatically (default 2 min) to clean up storage.
 
-## What's in this project?
+# Key files
 
-← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
+- public/receiver.js – Receiver logic (polling and downloading)
+- public/sender.js – Sender logic (taking/selecting photos)
+- public/admin.js - Admin view for event logging
+- server.js – Session and upload handling
+- log-service.js – Logging events to .data/events.log
+- views/ – EJS templates for receiver, sender, admin views
 
-← `public/style.css`: The styling rules for the pages in your site.
+# Main endpoints
 
-← `server.js`: The **Node.js** server script for your new site. The JavaScript defines the endpoints in the site back-end, one to return the homepage and one to update with the submitted color. Each one sends data to a Handlebars template which builds these parameter values into the web page the visitor sees.
+- POST /api/session/request – Receiver asks for a session; returns {sessionId, qrCodeData}
+- POST /api/session/:id/connect – Sender announces it joined
+- POST /upload/:id – Multipart photo upload
+- GET /status/:id – Receiver polls for pending files / peer presence
+- GET /image/:id/:imageId – Fetch and delete one image
+- GET /admin – View logs Basic-Auth dashboard (set ADMIN_CREDENTIALS)
 
-← `package.json`: The NPM packages for your project's dependencies.
+# Environment Variables
+| Env var              | Default        | Description                        |
+|----------------------|----------------|------------------------------------|
+| `PORT`               | `3000`         | HTTP port                          |
+| `SESSION_TIMEOUT_MS` | `120000`       | Session lifetime                   |
+| `CLIENT_TIMEOUT_MS`  | `3000`         | Client-side fetch timeout          |
+| `UPLOAD_DIR`         | `.data/uploads`| Temp image storage                 |
+| `ADMIN_CREDENTIALS`  | user:pass      | to enable `/admin`   |
 
-← `src/`: This folder holds the site template along with some basic data files.
 
-← `src/pages/index.hbs`: This is the main page template for your site. The template receives parameters from the server script, which it includes in the page HTML. The page sends the user submitted color value in the body of a request, or as a query parameter to choose a random color.
-
-← `src/colors.json`: A collection of CSS color names. We use this in the server script to pick a random color, and to match searches against color names.
-
-← `src/seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
-
-## Try this next 🏗️
-
-Take a look in `TODO.md` for next steps you can try out in your new site!
-
-___Want a minimal version of this project to build your own Node.js app? Check out [Blank Node](https://glitch.com/edit/#!/remix/glitch-blank-node)!___
-
-![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
 
 ## You built this with Glitch!
 
